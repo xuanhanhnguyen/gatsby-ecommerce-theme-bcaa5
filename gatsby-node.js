@@ -12,3 +12,30 @@ exports.onCreateWebpackConfig = (helper) => {
     actions.replaceWebpackConfig(config);
   }
 };
+
+
+/**
+ * event create pages
+ */
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createRedirect } = actions;
+
+  reporter.info('createRedirect /products/* to /buy/*');
+  createRedirect({
+    fromPath: `/products/*`,
+    toPath: `/product/sample?redirect=1`,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: `/blogs`,
+    toPath: `/blog?redirect=1`,
+    isPermanent: true,
+  });
+
+  createRedirect({
+    fromPath: `/abouts`,
+    toPath: `/about?redirect=1`,
+    isPermanent: true,
+  });
+};
