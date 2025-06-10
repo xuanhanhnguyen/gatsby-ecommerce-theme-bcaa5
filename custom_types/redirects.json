@@ -1,0 +1,11 @@
+{
+    "Main": {
+        "redirects": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "preformatted",
+                "label": "Redirects"
+            }
+        }
+    }
+}
