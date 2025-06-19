@@ -22,22 +22,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   reporter.info('createRedirect /products/* to /buy/*');
   createRedirect({
     fromPath: `/products/*`,
-    toPath: `/product/sample?redirect=1`,
+    toPath: `/buy/*`,
     isPermanent: true,
   });
 
+  reporter.info('createRedirect /sitemap/sitemap-index.xml to /sitemap.xml');
   createRedirect({
-    fromPath: `/blogs`,
-    toPath: `/blog?redirect=1`,
+    fromPath: `/sitemap.xml`,
+    toPath: `https://www.activeskin.com.au/sitemap/sitemap-index.xml`,
+    statusCode: 200,
     isPermanent: true,
   });
-
-  createRedirect({
-    fromPath: `/abouts`,
-    toPath: `/about?redirect=1`,
-    isPermanent: true,
-  });
-
+  
   const result = await graphql(`
     {
       allPrismicRedirects {
